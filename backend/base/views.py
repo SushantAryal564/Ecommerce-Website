@@ -11,7 +11,13 @@ from rest_framework.response import Response
 @api_view(['GET','POST','PUT'])
 def product_api(request,pk=None):
   if request.method == "GET":
-    return Response(products);
+    print(pk);
+    if(pk is not None):
+      for items in products:
+        if(pk == items['_id']):
+          return Response(items);
+  return Response(products);
+
 @api_view(['GET','POST'])
 def getRoutes(request):
   routes=[]
