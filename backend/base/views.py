@@ -14,7 +14,7 @@ def product_api(request,pk=None):
     print(pk);
     if(pk is not None):
       for items in products:
-        if(pk == items['_id']):
+        if(pk == int(items['_id'])):
           return Response(items);
   return Response(products);
 
