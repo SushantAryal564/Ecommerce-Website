@@ -16,14 +16,13 @@ const ProductScreen = () => {
   const { id } = useParams();
   useEffect(() => {
     async function fetchproduct() {
-      const { data } = await axios.get(`/api/products/${id}`);
-      console.log("************************");
-      console.log(data);
+      const { data } = await axios.get(
+        `http://127.0.0.1:8000/api/products/${id}`
+      );
       setProduct(data);
     }
     fetchproduct();
   }, []);
-
   return (
     <div>
       <Link to="/" className="btn btn-light my-3">
@@ -31,7 +30,11 @@ const ProductScreen = () => {
       </Link>
       <Row>
         <Col md={6}>
-          <Image src={product.image} alt={product.name} fluid />
+          <Image
+            src={`http://127.0.0.1:8000${product.image}`}
+            alt={product.name}
+            fluid
+          />
         </Col>
         <Col md={3}>
           <ListGroup variant="flush">
