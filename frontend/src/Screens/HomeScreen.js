@@ -11,7 +11,6 @@ function HomeScreen() {
   const products = useSelector((state) => {
     return state.product;
   });
-  console.log(products);
 
   return (
     <div>

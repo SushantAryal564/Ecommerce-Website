@@ -1,28 +1,18 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
-import {
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Button,
-  Card,
-  ListGroupItem,
-} from "react-bootstrap";
+import { productDetailAction } from "../store/prodcutDetailActions";
+import { useDispatch, useSelector } from "react-redux";
+import { Row, Col, Image, ListGroup, Button, Card } from "react-bootstrap";
 import Rating from "../components/Rating";
 const ProductScreen = () => {
-  const [product, setProduct] = useState([]);
+  const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
-    async function fetchproduct() {
-      const { data } = await axios.get(
-        `http://127.0.0.1:8000/api/products/${id}`
-      );
-      setProduct(data);
-    }
-    fetchproduct();
+    dispatch(productDetailAction(id));
   }, []);
+  const product = useSelector((state) => {
+    return state.productDetail;
+  });
   return (
     <div>
       <Link to="/" className="btn btn-light my-3">

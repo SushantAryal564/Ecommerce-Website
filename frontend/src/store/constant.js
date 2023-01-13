@@ -1,5 +1,7 @@
 export const PRODUCT_LIST = "PRODUCT_LIST";
 export const SET_PRODUCT_LIST = "SET_PRODUCT_LIST";
+export const PRODUCT_DETAIL = "PRODUCT_DETAIL";
+export const SET_PRODUCT_DETAIL = "SET_PRODUCT_DETAIL";
 /////////////////////////////////////////////////////
 export const PRODUCT_LIST_REQUEST = "PRODUCT_LIST_REQUEST";
 export const PRODUCT_LIST_SUCCESS = "PRODUCT_LIST_SUCCESS";
