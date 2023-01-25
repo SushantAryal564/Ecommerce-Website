@@ -1,13 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { productData, productDetailData } from "./../store/productReducer";
-import productSaga from "./productSaga";
-import { productDetailSaga } from "./productSaga";
-import createSagaMiddleware from "redux-saga";
-const sagaMiddleware = createSagaMiddleware();
-const store = configureStore({
-  reducer: { product: productData, productDetail: productDetailData },
-  middleware: () => [sagaMiddleware],
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+
+import { productDetailsReducer, productListReducer } from "./productReducers";
+const reducer = combineReducers({
+  product: productListReducer,
+  productDetail: productDetailsReducer,
 });
-sagaMiddleware.run(productSaga);
-sagaMiddleware.run(productDetailSaga);
+const store = configureStore({
+  reducer,
+});
 export default store;
